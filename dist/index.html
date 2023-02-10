@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>Standby Partnership Response Dashboard</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link rel='icon' type='image/png' href='https://data.humdata.org/images/icons/hdx.ico' />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.11/c3.min.css"/>
+    <link href='css/styles.css' rel='stylesheet' />
+    <script src="https://d3js.org/d3.v5.js"></script>
+    <script src="https://d3js.org/topojson.v1.min.js"></script>
+    <script src="https://d3js.org/topojson.v1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.11/c3.min.js"></script>
+    <script src="https://alexmacy.github.io/crossfilter/crossfilter.v1.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://d3-legend.susielu.com/d3-legend.min.js"></script>
+  </head>
+
+  <body>
+
+    <div class="loader">
+      <div class="sp sp-circle"></div>
+      Loading data...
+    </div>
+
+    <main>
+      <div class="grid-container">
+        <div class="col-12">
+          <header >
+            <img src="assets/logo/SBP.png" height="55">
+            <h1>
+              Standby Partnership Response Dashboard - 
+              <select name="year" id="yearSelect">
+                <!-- <option value="2020" selected>2020</option>
+                <option value="2019">2019</option> -->
+              </select> 
+              <span></span>
+            </h1>
+          </header>
+        </div>
+      </div>
+
+      <div class="grid-container">
+        <div class="col-3">
+          <div class="checks">
+            <label class="check-container">
+              <input type="radio" checked="checked" name="agencies" id="agencies"> UN Agencies
+              <span class="radio-btn"></span>
+            </label>
+            
+            <label class="check-container">
+              <input type="radio" name="roster" id="roster"> Roster Agencies
+              <span class="radio-btn"></span>
+            </label>
+          </div>
+
+          <div class="selection">
+            <select id="rankingSelect">
+              <option value="months">Total Deployments Received by Agency</option>
+              <option value="days">Deployment Duration by Agency (months)</option>
+            </select>    
+          </div>
+
+          <div id="rankingChart"></div>
+        </div>
+
+        <div class="col-9">
+          <div id="keyfig" class="grid-container"></div>
+
+          <div class="map-container grid-container">
+            <div id="map" class="col-12"></div>
+          </div>
+
+          <div id="piecharts" class="grid-container"></div>
+
+          <div id="barcharts" class="grid-container"></div>
+
+        </div>
+      </div>
+      <!-- <div class='grid-container'>
+        <div class="col-12">
+          <header >
+            <h1>Standby Partnership Response Dashboard</h1>
+          </header>
+        </div>
+
+        <div class="col-12 content">
+          
+          <div class="col-3 left">
+            
+            <div class="checks">
+              <label class='check-container'>
+                <input type='radio'  checked='checked' name='langRadio' id="roster"> Roster
+                <span class='radio-btn'></span>
+              </label>
+
+              <label class='check-container'>
+                <input type='radio' name='langRadio' id="agencies"> UN Agencies
+                <span class='radio-btn'></span>
+              </label>
+            
+            </div>
+
+            <div class="selection">
+              <select name="" id="">
+                <option value="months">Total Deployments Received by Agency</option>
+                <option value="days">Deployments Duration by Agency (days)</option>
+              </select>    
+            </div>
+
+            <div id="barChart"></div>
+          </div>
+
+          <div class="col-9 right">
+            
+            <div id="keyfig">
+            </div>
+
+            <div class="map">
+              <div id="map"></div>
+            </div>
+
+            <div id="piecharts"></div>
+
+            <div id="barcharts"></div>
+          </div>
+        </div>
+        
+      </div> -->
+    </main>
+
+    <footer>
+      <div class='logos'>
+        <div class='grid-container'>
+          <div class='col-12'>
+            <a href='https://www.unocha.org' target='_blank'>
+              <img height='30' src='assets/logo-ocha-gray.png'>
+            </a>
+            <a href='https://centre.humdata.org' target='_blank'>
+              <img height='38' src='assets/logo-centre-gray.png'>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- start Mixpanel -->
+    <script type="text/javascript">(function(e,a){if(!a.__SV){var b=window;try{var c,l,i,j=b.location,g=j.hash;c=function(a,b){return(l=a.match(RegExp(b+"=([^&]*)")))?l[1]:null};g&&c(g,"state")&&(i=JSON.parse(decodeURIComponent(c(g,"state"))),"mpeditor"===i.action&&(b.sessionStorage.setItem("_mpcehash",g),history.replaceState(i.desiredHash||"",e.title,j.pathname+j.search)))}catch(m){}var k,h;window.mixpanel=a;a._i=[];a.init=function(b,c,f){function e(b,a){var c=a.split(".");2==c.length&&(b=b[c[0]],a=c[1]);b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,
+      0)))}}var d=a;"undefined"!==typeof f?d=a[f]=[]:f="mixpanel";d.people=d.people||[];d.toString=function(b){var a="mixpanel";"mixpanel"!==f&&(a+="."+f);b||(a+=" (stub)");return a};d.people.toString=function(){return d.toString(1)+".people (stub)"};k="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+      for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";c=e.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c)}})(document,window.mixpanel||[]);
+    </script>
+    <!-- End Mixpanel -->
+    <script type='text/javascript' src='js/bundle.js'></script>
+  </body>
+</html>
