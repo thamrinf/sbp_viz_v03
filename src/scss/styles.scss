@@ -1,0 +1,314 @@
+@import '_fonts';
+@import '_grid';
+@import '_loader';
+
+* {
+	box-sizing: border-box;
+}
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+
+html, body {
+  	height: 100%;
+}
+
+body {
+ 	display: flex;
+  	flex-direction: column;
+	font-family: 'Source Sans Pro', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+main {
+	flex: 1;
+	opacity: 0;
+}
+
+header { 
+	//background-color: #EBEBEB ;//#353535;
+	display: flex;
+	margin-bottom: 15px;
+	align-items: center;
+	justify-content: center;
+}
+
+h1 {
+	font-size: 26px;
+	margin: 0;
+	padding: 0 0 0 20px;
+}
+
+h1 span {
+	font-size: 10px;
+	font-weight: normal;
+}
+
+h3 {
+	color: #000;
+	font-family: 'Gotham-Bold', sans-serif;
+	font-size: 14px;
+	line-height: 16px;
+	margin: 0;
+	&.header {
+		background-color: #007CE1;
+		color: #FFF;
+		margin: 18px 0;
+		padding: 4px 6px;
+	}
+}
+
+h4 {
+	font-family: 'Gotham-Bold', sans-serif;
+	font-size: 14px;
+	margin: 0;
+	padding-bottom: 5px;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 80px;
+  margin-top: 10px;
+}
+
+.checks {
+	display: flex;
+	flex-direction: row;
+}
+
+#yearSelect {
+	background-color: #FFF;
+    border-color: #FFF;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    font: 700 19px 'Source Sans Pro', sans-serif;
+    margin: 20px 0;
+    width: 80px;
+    height: 35px;
+}
+
+#rankingSelect {
+	background-color: #FFF;
+    border-color: #FFF;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    font: 700 16px 'Source Sans Pro', sans-serif;
+    height: 60px;
+    margin: 20px 0;
+    padding: 0 20px;
+    white-space: pre-wrap;
+    width: 100%;
+}
+
+#keyfig {
+	.key-figure {
+		.inner {
+			//border-bottom: 1px solid #CCC;
+		}
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+	.num {
+		color: #000;
+		font-family: 'Gotham-Light', sans-serif;
+		font-size: 36px;
+		line-height: 36px;
+		padding: 10px 0 0;
+		span {
+			font-size: 26px;
+		}
+	}
+}
+
+.image {
+	border-radius: 50%;
+}
+
+.map-container {
+	margin: 20px 0 10px;
+}
+
+#map{
+	fill: #A6D8E8;
+  position: relative;
+  width: 100%;
+  .map-regions{
+
+    stroke: #CCC;
+    cursor: pointer;
+  }
+  .zoom-controls {
+    position: absolute;
+    left: 20px;
+    top: 125px;
+    display: grid;
+    grid-gap: 5px;  
+    button {
+      width: 30px;
+      height: 30px;
+      font-size: 18px;
+      border-radius: 50% !important;
+      background: #FFF;
+      color: #000;
+      border: none;
+      user-select: none;
+      cursor: pointer;
+      text-align: center;
+    }
+    button:active {
+      background: rgba(255, 255, 255, 0.8);
+    }
+    button:focus {
+      outline: 0;
+    }
+  }
+}
+
+#legend {
+  	background-color: #FFF;
+  	right: 10px; 
+  	color: #000;
+  	opacity: 0.8;
+  	padding-left: 5px;
+  	padding-top: 5px;
+  	bottom: 10px;
+  	width: 130px;
+  	position: absolute;
+  	.label {
+  		fill: #000;
+  		font-size: 12px;
+  	}
+  	.legendTitle {
+  		font-size: 12px;
+  		fill: #000;
+  		transform: translate(0, 8px);
+  	}
+    h3 {
+      font-size: 12px;
+    }
+  }
+
+
+.d3-tip {
+    padding: 10px;
+    background-color: #FFF;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border: 0px;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #000;
+    transition: 0.3s opacity ease;
+    z-index: 100;
+    pointer-events: none;
+    ul {
+    	margin: 0;
+    }
+}
+
+.map-tip{
+  position: absolute;
+}
+
+
+.hidden { 
+  display: none; 
+}
+
+#nochart {
+	font-size: 12px;
+}
+
+
+.pie {
+	h3 {
+		height: 40px;
+	}
+}
+.barchart {
+	.tick {
+		font-size: 12px;
+	}
+	.c3 {
+		height: 250px;
+		overflow: scroll;
+	}
+}
+
+.bar-container {
+	cursor: pointer;
+	&.active,
+	&.selected {
+		.bar-button {
+			fill: #EBEBEB;
+		}
+		.label-num {
+			font-weight: 600;
+		}
+	}
+	.bar,
+	.label-num {
+		pointer-events: none;
+	}
+}
+
+#rankingChart {
+	height: 650px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+.label-num {
+	font-size: 14px;
+}
+
+footer {
+	background-color: #353535;
+	color: #FFF;
+	padding: 20px 0 10px;
+	opacity: 0;
+	margin-top: 30px;
+}
+
+.logos {
+	img {
+		margin-right: 40px;
+		margin-bottom: 0;
+		vertical-align: top;
+		width: auto;
+	}
+}
+
+
+.c3-legend-background {
+  stroke: none;
+}
+
+.c3 text {
+	fill: #000 !important;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.c3-axis {
+	.tick text {
+		fill: #000;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.logos {
+		.grid-container > div {
+			padding: 0;
+			text-align: center;
+		}
+		img {
+			margin: 10px;
+		}
+	}
+}
